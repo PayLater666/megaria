@@ -2,7 +2,7 @@ FROM python:slim-buster
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD https://raw.githubusercontent.com/Ncode2014/stuff/Kernelmaker/requirements.txt requirements.txt
+ADD https://raw.githubusercontent.com/Ncode2014/nekadok/req/requirements.txt requirements.txt
 RUN set -ex \
     && apt-get -qq update \
     && apt-get -qq -y install --no-install-recommends \
