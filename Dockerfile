@@ -7,7 +7,6 @@ RUN set -ex \
     && apt-get -qq update \
     && apt-get -qq -y install --no-install-recommends \
         apt-utils \
-        aria2 \
         bash \
         build-essential \
         curl \
@@ -49,11 +48,14 @@ RUN set -ex \
     && pip3 install -r requirements.txt \
     && rm requirements.txt \
 
-    # Install RAR
+    # Install RAR & Aria
     && mkdir -p /tmp/ \
     && cd /tmp/ \
     && wget -O /tmp/rarlinux.tar.gz http://www.rarlab.com/rar/rarlinux-x64-6.0.0.tar.gz \
+    && wget -O /tmp/aria.tar.gz https://github.com/P3TERX/Aria2-Pro-Core/releases/download/1.35.0_2021.02.19/aria2-1.35.0-static-linux-amd64.tar.gz \
+    && tar -xzvf aria.tar.gz \
     && tar -xzvf rarlinux.tar.gz \
+    && cp -v aria2c /usr/bin/ \
     && cd rar \
     && cp -v rar unrar /usr/bin/ \
 
