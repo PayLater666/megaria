@@ -11,7 +11,6 @@ RUN set -ex \
         bash \
         build-essential \
         curl \
-        ffmpeg \
         figlet \
         git \
         gnupg2 \
@@ -46,6 +45,17 @@ RUN set -ex \
     && chown root:root /usr/bin/chromedriver \
     && chmod 0755 /usr/bin/chromedriver \
 
+    # Install ffmpeg
+    && mkdir -p /tmp/ \
+    && cd /tmp/ \
+    && wget -O /tmp/ffmpeg.tar.gz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz \
+    && tar -xzvf ffmpeg.tar.gz \
+    && cd ffmpeg-git* \
+    && cp -v ffmpeg ffprobe /usr/bin/ \
+    && cp -r -v model /usr/local/share/ \
+
+    # clean up ffmpeg
+    && rm -rf /tmp/ffmpeg* \
 
     # Install Python modules
     && pip3 install -r requirements.txt \
@@ -58,6 +68,7 @@ RUN set -ex \
     && tar -xzvf rarlinux.tar.gz \
     && cd rar \
     && cp -v rar unrar /usr/bin/ \
+
     # clean up
     && rm -rf /tmp/rar* \
 
