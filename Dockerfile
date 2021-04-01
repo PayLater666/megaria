@@ -45,18 +45,6 @@ RUN set -ex \
     && chown root:root /usr/bin/chromedriver \
     && chmod 0755 /usr/bin/chromedriver \
 
-    # Install ffmpeg
-    && mkdir -p /tmp/ \
-    && cd /tmp/ \
-    && wget -O /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz \
-    && tar -xvf ffmpeg.tar.xz \
-    && cd ffmpeg-git* \
-    && cp -v ffmpeg ffprobe /usr/bin/ \
-    && cp -r -v model /usr/local/share/ \
-
-    # clean up ffmpeg
-    && rm -rf /tmp/ffmpeg* \
-
     # Install Python modules
     && pip3 install -r requirements.txt \
     && rm requirements.txt \
@@ -71,6 +59,22 @@ RUN set -ex \
 
     # clean up
     && rm -rf /tmp/rar* \
+    
+    # To fix some error maybe
+    && rm -rf /tmp/ \
+
+
+    # Install ffmpeg
+    && mkdir -p /tmp/ \
+    && cd /tmp/ \
+    && wget -O /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz \
+    && tar -xvf ffmpeg.tar.xz \
+    && cd ffmpeg-git* \
+    && cp -v ffmpeg ffprobe /usr/bin/ \
+    && cp -r -v model /usr/local/share/ \
+
+    # clean up ffmpeg
+    && rm -rf /tmp/ffmpeg* \
 
     # Cleanup
     && apt-get -qq -y purge --auto-remove \
