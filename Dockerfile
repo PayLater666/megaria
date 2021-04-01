@@ -48,8 +48,8 @@ RUN set -ex \
     # Install ffmpeg
     && mkdir -p /tmp/ \
     && cd /tmp/ \
-    && wget -O /tmp/ffmpeg.tar.gz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz \
-    && tar -xzvf ffmpeg.tar.gz \
+    && wget -O /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz \
+    && tar -xzvf ffmpeg.tar.xz \
     && cd ffmpeg-git* \
     && cp -v ffmpeg ffprobe /usr/bin/ \
     && cp -r -v model /usr/local/share/ \
