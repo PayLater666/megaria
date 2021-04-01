@@ -22,7 +22,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64
         push: true
-        tags: narima/nekadok:buster
+        tags: narima/megaria:latest
         
     - name: send telegram message
       run: |
