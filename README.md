@@ -1,9 +1,9 @@
-# Docker for Ex-bot
-Docker for [Testing](https://github.com/Ncode2014/nikabut) Torrent
+# Docker for Torrent-Boy
+Docker for [Torrent_Bot](https://github.com/Ncode2014/MirrorX) Torrent
 
 ## How to Use?
 ```
-docker pull Ncode2014/megaria:
+docker pull Ncode2014/megaria:latest
 ```
 
 ## Build Status
